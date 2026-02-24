@@ -30,3 +30,9 @@ Thumbs.db
 venv/
 .venv/
 env/
+
+# Node/Frontend junk (if any)
+node_modules/
+npm-debug.log
+yarn-error.log
+pnpm-debug.log

@@ -1,0 +1,27 @@
+{
+  "name": "24febfattyurl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx @tailwindcss/cli -i ./input.css -o ./static/css/main.css",
+    "collect": "uv run manage.py collectstatic --noinput",
+    "start": "npm run build && npm run collect"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/K-K-18/24febfattyurl.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/K-K-18/24febfattyurl/issues"
+  },
+  "homepage": "https://github.com/K-K-18/24febfattyurl#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.2.1",
+    "tailwindcss": "^4.2.1"
+  }
+}
