@@ -6,7 +6,9 @@
   "scripts": {
     "build": "npx @tailwindcss/cli -i ./input.css -o ./static/css/main.css",
     "collect": "uv run manage.py collectstatic --noinput",
-    "start": "npm run build && npm run collect"
+    "run": "uv run manage.py runserver",
+    "start": "npm run build && npm run collect",
+    "dev": "nodemon --watch . --ext html --exec \"npm run build && npm run collect && npm run run\""
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,7 @@
   "homepage": "https://github.com/K-K-18/24febfattyurl#readme",
   "dependencies": {
     "@tailwindcss/cli": "^4.2.1",
+    "nodemon": "^3.1.14",
     "tailwindcss": "^4.2.1"
   }
 }

@@ -54,12 +54,18 @@
         </div>
     </nav>
 
-    <!-- Messages -->
+    <!-- Toast Messages (fixed bottom) -->
     {% if messages %}
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 max-w-sm w-full" style="pointer-events: none;">
         {% for message in messages %}
-        <div class="rounded-lg p-4 mb-2 {% if message.tags == 'error' %}bg-red-50 text-red-700{% elif message.tags == 'success' %}bg-green-50 text-green-700{% else %}bg-blue-50 text-blue-700{% endif %}">
-            {{ message }}
+        <div class="toast-item relative flex items-start gap-3 rounded-lg shadow-lg border px-4 py-3 text-sm {% if message.tags == 'error' %}bg-red-50 border-red-200 text-red-700{% elif message.tags == 'success' %}bg-green-50 border-green-200 text-green-700{% else %}bg-blue-50 border-blue-200 text-blue-700{% endif %}"
+             style="pointer-events: auto; animation: toast-in 0.3s ease-out;">
+            <i class="fa-solid {% if message.tags == 'error' %}fa-circle-xmark text-red-500{% elif message.tags == 'success' %}fa-circle-check text-green-500{% else %}fa-circle-info text-blue-500{% endif %} mt-0.5"></i>
+            <span class="flex-1">{{ message }}</span>
+            <button onclick="this.closest('.toast-item').remove()" class="ml-2 opacity-60 hover:opacity-100 cursor-pointer" aria-label="Dismiss">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="toast-timer absolute bottom-0 left-0 h-0.5 rounded-b-lg {% if message.tags == 'error' %}bg-red-400{% elif message.tags == 'success' %}bg-green-400{% else %}bg-blue-400{% endif %}"></div>
         </div>
         {% endfor %}
     </div>
@@ -114,5 +120,31 @@
 
     <script src="{% static 'js/app.js' %}"></script>
     {% block extra_js %}{% endblock %}
+
+    <style>
+        @keyframes toast-in {
+            from { opacity: 0; transform: translateY(1rem); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes toast-out {
+            from { opacity: 1; transform: translateY(0); }
+            to   { opacity: 0; transform: translateY(1rem); }
+        }
+        @keyframes timer-shrink {
+            from { width: 100%; }
+            to   { width: 0%; }
+        }
+        .toast-timer {
+            animation: timer-shrink 5s linear forwards;
+        }
+    </style>
+    <script>
+        document.querySelectorAll('.toast-item').forEach(function (toast) {
+            setTimeout(function () {
+                toast.style.animation = 'toast-out 0.3s ease-in forwards';
+                toast.addEventListener('animationend', function () { toast.remove(); });
+            }, 5000);
+        });
+    </script>
 </body>
 </html>

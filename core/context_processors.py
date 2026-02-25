@@ -1,4 +1,7 @@
+from django.conf import settings
+
 from django.core.cache import cache
+
 def site_stats(request):
     stats = cache.get('site_stats')
     if stats is None:
@@ -17,4 +20,16 @@ def site_stats(request):
             if getattr(request, 'site', None) and getattr(request.site, 'domain', None)
             else request.build_absolute_uri('/').rstrip('/')
         ),
+    }
+
+
+def social_provider_status(request):
+    google_provider = settings.SOCIALACCOUNT_PROVIDERS.get('google', {}).get('APP', {})
+    github_provider = settings.SOCIALACCOUNT_PROVIDERS.get('github', {}).get('APP', {})
+
+    return {
+        'social_providers': {
+            'google': bool(google_provider.get('client_id', '').strip()),
+            'github': bool(github_provider.get('secret', '').strip()) and bool(github_provider.get('client_id', '').strip()),
+        }
     }

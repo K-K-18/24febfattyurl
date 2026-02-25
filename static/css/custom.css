@@ -42,3 +42,67 @@ input[type="file"]::file-selector-button {
 input:focus, select:focus, textarea:focus {
     outline: none;
 }
+
+/* Allauth / account pages – match site theme */
+.rounded-2xl form p {
+    margin-bottom: 1rem;
+}
+.rounded-2xl form label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.25rem;
+}
+.rounded-2xl form input[type="text"],
+.rounded-2xl form input[type="email"],
+.rounded-2xl form input[type="password"],
+.rounded-2xl form input[type="url"],
+.rounded-2xl form input[type="hidden"],
+.rounded-2xl form textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #d1d5db;
+    font-size: 1rem;
+}
+.rounded-2xl form input:focus,
+.rounded-2xl form textarea:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25);
+}
+.rounded-2xl form .errorlist {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.5rem 0;
+    color: #b91c1c;
+    font-size: 0.875rem;
+}
+.rounded-2xl form button[type="submit"],
+.rounded-2xl form input[type="submit"] {
+    width: 100%;
+    background: #4f46e5;
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+.rounded-2xl form button[type="submit"]:hover,
+.rounded-2xl form input[type="submit"]:hover {
+    background: #4338ca;
+}
+.rounded-2xl h1 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+.rounded-2xl p {
+    color: #4b5563;
+    margin-bottom: 1rem;
+}

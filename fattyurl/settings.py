@@ -95,6 +95,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'core.context_processors.site_stats',
+                'core.context_processors.social_provider_status',
             ],
         },
     },
@@ -164,6 +165,10 @@ SOCIALACCOUNT_PROVIDERS = {
         'SCOPE': ['user:email'],
     },
 }
+
+SOCIALACCOUNT_ADAPTER = 'core.adapters.ForceAutoSignupSocialAccountAdapter'
+SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_LOGIN_ON_GET = True
 
 # DRF
 REST_FRAMEWORK = {
