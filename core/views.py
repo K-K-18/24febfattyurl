@@ -314,6 +314,26 @@ def generate_qr(request):
     bg = request.GET.get('bg', '#FFFFFF')
     fmt = request.GET.get('format', 'png')
 
+    def normalize_hex_color(value: str, fallback: str) -> str:
+        color = (value or '').strip().lower()
+        if not color:
+            return fallback
+        if color.startswith('#'):
+            color = color[1:]
+        if len(color) == 3:
+            if all(c in '0123456789abcdef' for c in color):
+                color = ''.join(ch + ch for ch in color)
+            else:
+                return fallback
+        elif len(color) != 6:
+            return fallback
+        elif not all(c in '0123456789abcdef' for c in color):
+            return fallback
+        return f'#{color}'
+
+    fg = normalize_hex_color(fg, '#000000')
+    bg = normalize_hex_color(bg, '#FFFFFF')
+
     if fmt == 'svg':
         qr = qrcode.QRCode(box_size=10, border=4)
         qr.add_data(url)
