@@ -46,6 +46,13 @@ def shorten_url(request):
         if custom_slug:
             link.custom_slug = custom_slug
         link.save()
+        if not request.user.is_authenticated:
+            pending_link_ids = request.session.get('pending_link_ids', [])
+            if not isinstance(pending_link_ids, list):
+                pending_link_ids = []
+            if link.id not in pending_link_ids:
+                pending_link_ids.append(link.id)
+                request.session['pending_link_ids'] = pending_link_ids
         return render(request, 'partials/shorten_result.html', {
             'link': link,
             'is_authenticated': request.user.is_authenticated,

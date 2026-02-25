@@ -61,7 +61,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.github',
     'rest_framework',
     # Local
-    'core',
+    'core.apps.CoreConfig',
     'api',
 ]
 
