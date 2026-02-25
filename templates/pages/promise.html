@@ -3,57 +3,89 @@
 {% block title %}Our Promise: Links Never Die - FattyURL{% endblock %}
 
 {% block content %}
-<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="text-center mb-12">
-        <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <i class="fa-solid fa-shield-halved text-indigo-600 text-3xl"></i>
-        </div>
-        <h1 class="text-4xl font-bold text-gray-900 mb-4">Links Never Die</h1>
-        <p class="text-xl text-gray-600">Our permanent public promise to every FattyURL user.</p>
+<div class="relative min-h-screen">
+    <!-- Background ambient glow -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute top-[-10%] left-[15%] w-[500px] h-[500px] bg-lime-500/5 rounded-full blur-[150px] animate-drift"></div>
+        <div class="absolute bottom-[-10%] right-[10%] w-[400px] h-[400px] bg-emerald-500/4 rounded-full blur-[120px] animate-drift-reverse"></div>
     </div>
 
-    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 space-y-8">
-        <div class="flex items-start gap-4">
-            <i class="fa-solid fa-ban text-red-500 text-xl mt-1"></i>
-            <div>
-                <h3 class="text-lg font-semibold text-gray-900">No Ads. Ever.</h3>
-                <p class="text-gray-600 mt-1">We will never insert interstitial pages, pop-ups, affiliate tags, or any form of advertising into your shortened links. Your visitors go straight to the destination.</p>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="text-center mb-16 animate-fade-in-up">
+            <div class="w-20 h-20 bg-lime-500/10 border border-lime-500/20 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-lg shadow-lime-500/10">
+                <i class="fa-solid fa-shield-halved text-lime-400 text-4xl"></i>
             </div>
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-white font-display tracking-tight mb-6">
+                Links <span class="text-transparent bg-clip-text bg-gradient-to-r from-lime-300 to-emerald-400">Never Die</span>
+            </h1>
+            <p class="text-zinc-400 font-body text-xl max-w-2xl mx-auto">
+                Our permanent public promise to every FattyURL user.
+            </p>
         </div>
-        <div class="flex items-start gap-4">
-            <i class="fa-solid fa-infinity text-indigo-600 text-xl mt-1"></i>
-            <div>
-                <h3 class="text-lg font-semibold text-gray-900">No Link Expiry</h3>
-                <p class="text-gray-600 mt-1">Your links will never expire. Not after 30 days, not after a year, not ever. A link created today will work in 2030 and beyond.</p>
-            </div>
-        </div>
-        <div class="flex items-start gap-4">
-            <i class="fa-solid fa-lock-open text-green-600 text-xl mt-1"></i>
-            <div>
-                <h3 class="text-lg font-semibold text-gray-900">No Paywall</h3>
-                <p class="text-gray-600 mt-1">Every feature you see today will remain free. We will never lock existing features behind a paid tier. Analytics, QR codes, custom slugs — all free, always.</p>
-            </div>
-        </div>
-        <div class="flex items-start gap-4">
-            <i class="fa-solid fa-power-off text-orange-500 text-xl mt-1"></i>
-            <div>
-                <h3 class="text-lg font-semibold text-gray-900">No Deactivation</h3>
-                <p class="text-gray-600 mt-1">We will never deactivate working links. If you created it and it's not violating our terms of service, it stays live.</p>
-            </div>
-        </div>
-        <div class="flex items-start gap-4">
-            <i class="fa-solid fa-database text-purple-600 text-xl mt-1"></i>
-            <div>
-                <h3 class="text-lg font-semibold text-gray-900">Open Redirect Database</h3>
-                <p class="text-gray-600 mt-1">If FattyURL ever shuts down, we will open-source the entire redirect database so your links continue to work. No link left behind.</p>
-            </div>
-        </div>
-    </div>
 
-    <div class="text-center mt-12">
-        <a href="{% url 'home' %}" class="inline-block bg-indigo-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-indigo-700 transition-colors">
-            Start Shortening Links
-        </a>
+        <div class="grid grid-cols-1 gap-6 animate-fade-in-up delay-100">
+            <!-- Promise Item 1 -->
+            <div class="group relative">
+                <div class="absolute -inset-px bg-gradient-to-r from-zinc-800 to-zinc-800 rounded-3xl group-hover:from-lime-500/20 group-hover:to-emerald-500/20 transition-all duration-500"></div>
+                <div class="relative bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-3xl p-8 flex flex-col sm:flex-row gap-6 items-start">
+                    <div class="w-12 h-12 bg-rose-500/10 border border-rose-500/20 rounded-xl flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-ban text-rose-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white font-display mb-2">No Ads. Ever.</h3>
+                        <p class="text-zinc-400 font-body leading-relaxed">We will never insert interstitial pages, pop-ups, affiliate tags, or any form of advertising into your shortened links. Your visitors go straight to the destination with zero friction.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Promise Item 2 -->
+            <div class="group relative">
+                <div class="absolute -inset-px bg-gradient-to-r from-zinc-800 to-zinc-800 rounded-3xl group-hover:from-lime-500/20 group-hover:to-emerald-500/20 transition-all duration-500"></div>
+                <div class="relative bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-3xl p-8 flex flex-col sm:flex-row gap-6 items-start">
+                    <div class="w-12 h-12 bg-lime-500/10 border border-lime-500/20 rounded-xl flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-infinity text-lime-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white font-display mb-2">No Link Expiry</h3>
+                        <p class="text-zinc-400 font-body leading-relaxed">Your links will never expire. Not after 30 days, not after a year, not ever. A link created today will work in 2030 and beyond, guaranteed.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Promise Item 3 -->
+            <div class="group relative">
+                <div class="absolute -inset-px bg-gradient-to-r from-zinc-800 to-zinc-800 rounded-3xl group-hover:from-lime-500/20 group-hover:to-emerald-500/20 transition-all duration-500"></div>
+                <div class="relative bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-3xl p-8 flex flex-col sm:flex-row gap-6 items-start">
+                    <div class="w-12 h-12 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-lock-open text-emerald-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white font-display mb-2">No Paywall</h3>
+                        <p class="text-zinc-400 font-body leading-relaxed">Every feature you see today will remain free. We will never lock existing features behind a paid tier. Analytics, QR codes, custom slugs — all free, always.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Promise Item 4 -->
+            <div class="group relative">
+                <div class="absolute -inset-px bg-gradient-to-r from-zinc-800 to-zinc-800 rounded-3xl group-hover:from-lime-500/20 group-hover:to-emerald-500/20 transition-all duration-500"></div>
+                <div class="relative bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-3xl p-8 flex flex-col sm:flex-row gap-6 items-start">
+                    <div class="w-12 h-12 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-power-off text-amber-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white font-display mb-2">No Deactivation</h3>
+                        <p class="text-zinc-400 font-body leading-relaxed">We will never deactivate working links. If you created it and it's not violating our terms of service, it stays live. Period.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-16 text-center animate-fade-in-up delay-200">
+            <a href="{% url 'home' %}" class="inline-flex items-center px-10 py-4 rounded-xl bg-lime-400 text-zinc-900 font-bold text-lg hover:bg-lime-300 transition-all duration-200 shadow-lg shadow-lime-500/25 hover:scale-[1.02] active:scale-[0.98] font-display">
+                <i class="fa-solid fa-bolt mr-2"></i>Start Shortening Now
+            </a>
+        </div>
     </div>
 </div>
 {% endblock %}

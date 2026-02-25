@@ -24,7 +24,6 @@
     <!-- Chart.js -->
     <script src="{% static 'js/chart.min.js' %}"></script>
 
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     {% block extra_head %}{% endblock %}
 </head>
 <body class="h-full bg-zinc-950 text-zinc-50 flex flex-col font-body" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>

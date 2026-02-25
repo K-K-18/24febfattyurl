@@ -3,36 +3,95 @@
 {% block title %}Privacy Policy - FattyURL{% endblock %}
 
 {% block content %}
-<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <h1 class="text-3xl font-bold text-gray-900 mb-6">Privacy Policy</h1>
-    <div class="prose prose-lg text-gray-600 space-y-4">
-        <p><strong>Last updated:</strong> February 2025</p>
+<div class="relative min-h-screen">
+    <!-- Background ambient glow -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute top-[-10%] left-[-10%] w-[400px] h-[400px] bg-lime-500/5 rounded-full blur-[120px] animate-drift"></div>
+        <div class="absolute bottom-[20%] right-[-5%] w-[300px] h-[300px] bg-emerald-500/4 rounded-full blur-[100px] animate-drift-reverse"></div>
+    </div>
 
-        <h2 class="text-2xl font-bold text-gray-900 mt-8">What We Collect</h2>
-        <p>When someone clicks a shortened link, we collect:</p>
-        <ul class="list-disc pl-6 space-y-1">
-            <li>Browser type and version</li>
-            <li>Operating system</li>
-            <li>Device type (mobile, desktop, tablet)</li>
-            <li>Referring URL</li>
-            <li>Country and city (from CDN headers, not IP geolocation databases)</li>
-            <li>A SHA-256 hash of the IP address (we never store raw IP addresses)</li>
-        </ul>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="text-center mb-16 animate-fade-in-up">
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-white font-display tracking-tight mb-6">
+                Privacy <span class="text-transparent bg-clip-text bg-gradient-to-r from-lime-300 to-emerald-400">Policy</span>
+            </h1>
+            <p class="text-zinc-500 font-body text-lg">Last updated: February 2026</p>
+        </div>
 
-        <h2 class="text-2xl font-bold text-gray-900 mt-8">What We Don't Do</h2>
-        <ul class="list-disc pl-6 space-y-1">
-            <li>We never store raw IP addresses</li>
-            <li>We never use tracking pixels</li>
-            <li>We never sell your data to anyone</li>
-            <li>We never show ads or interstitial pages</li>
-            <li>We never share individual click data with third parties</li>
-        </ul>
+        <div class="bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-3xl p-8 sm:p-12 shadow-2xl animate-fade-in-up delay-100 mb-12">
+            <div class="prose prose-invert prose-zinc max-w-none font-body text-zinc-400 leading-relaxed space-y-12">
+                <section>
+                    <h2 class="text-2xl font-bold text-white font-display mb-6 flex items-center">
+                        <span class="w-8 h-8 rounded-lg bg-lime-500/10 border border-lime-500/20 flex items-center justify-center mr-3">
+                            <i class="fa-solid fa-database text-lime-400 text-sm"></i>
+                        </span>
+                        What We Collect
+                    </h2>
+                    <p>When someone clicks a shortened link, we collect minimal data to provide analytics:</p>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 list-none pl-0">
+                        <li class="flex items-center gap-3 p-3 rounded-xl bg-zinc-800/30 border border-zinc-700/30">
+                            <i class="fa-solid fa-window-maximize text-zinc-500"></i> Browser type and version
+                        </li>
+                        <li class="flex items-center gap-3 p-3 rounded-xl bg-zinc-800/30 border border-zinc-700/30">
+                            <i class="fa-solid fa-laptop text-zinc-500"></i> Operating system
+                        </li>
+                        <li class="flex items-center gap-3 p-3 rounded-xl bg-zinc-800/30 border border-zinc-700/30">
+                            <i class="fa-solid fa-mobile-screen text-zinc-500"></i> Device type
+                        </li>
+                        <li class="flex items-center gap-3 p-3 rounded-xl bg-zinc-800/30 border border-zinc-700/30">
+                            <i class="fa-solid fa-link text-zinc-500"></i> Referring URL
+                        </li>
+                        <li class="flex items-center gap-3 p-3 rounded-xl bg-zinc-800/30 border border-zinc-700/30">
+                            <i class="fa-solid fa-location-dot text-zinc-500"></i> Country and city
+                        </li>
+                        <li class="flex items-center gap-3 p-3 rounded-xl bg-zinc-800/30 border border-zinc-700/30">
+                            <i class="fa-solid fa-fingerprint text-zinc-500"></i> Hashed IP (SHA-256)
+                        </li>
+                    </ul>
+                </section>
 
-        <h2 class="text-2xl font-bold text-gray-900 mt-8">Account Data</h2>
-        <p>If you create an account, we store your email address for authentication purposes. You can delete your account and all associated data at any time by contacting us.</p>
+                <div class="h-px bg-zinc-800"></div>
 
-        <h2 class="text-2xl font-bold text-gray-900 mt-8">Contact</h2>
-        <p>Questions about our privacy practices? <a href="{% url 'contact_page' %}" class="text-indigo-600 hover:underline">Contact us</a>.</p>
+                <section>
+                    <h2 class="text-2xl font-bold text-white font-display mb-6 flex items-center">
+                        <span class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mr-3">
+                            <i class="fa-solid fa-shield-halved text-emerald-400 text-sm"></i>
+                        </span>
+                        What We Don't Do
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="flex gap-4">
+                            <i class="fa-solid fa-xmark text-rose-500 mt-1"></i>
+                            <p class="m-0 text-sm">We never store raw IP addresses.</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <i class="fa-solid fa-xmark text-rose-500 mt-1"></i>
+                            <p class="m-0 text-sm">We never use tracking pixels.</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <i class="fa-solid fa-xmark text-rose-500 mt-1"></i>
+                            <p class="m-0 text-sm">We never sell your data to anyone.</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <i class="fa-solid fa-xmark text-rose-500 mt-1"></i>
+                            <p class="m-0 text-sm">We never show ads or interstitials.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="h-px bg-zinc-800"></div>
+
+                <section>
+                    <h2 class="text-2xl font-bold text-white font-display mb-4">Account Data</h2>
+                    <p>If you create an account, we store your email address for authentication purposes. You can delete your account and all associated data at any time by <a href="{% url 'contact_page' %}" class="text-lime-400 hover:underline">contacting us</a>.</p>
+                </section>
+            </div>
+        </div>
+        <div class="text-center animate-fade-in-up delay-200">
+            <a href="{% url 'home' %}" class="inline-flex items-center px-10 py-4 rounded-xl bg-lime-400 text-zinc-900 font-bold text-lg hover:bg-lime-300 transition-all duration-200 shadow-lg shadow-lime-500/20 hover:scale-[1.02] active:scale-[0.98] font-display">
+                Back to Home
+            </a>
+        </div>
     </div>
 </div>
 {% endblock %}

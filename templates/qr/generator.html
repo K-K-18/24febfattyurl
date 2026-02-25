@@ -4,55 +4,107 @@
 {% block meta_description %}Generate free custom QR codes with custom colors. Download as PNG or SVG. No watermarks, no signup required.{% endblock %}
 
 {% block content %}
-<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="text-center mb-10">
-        <h1 class="text-3xl font-bold text-gray-900 mb-3">
-            <i class="fa-solid fa-qrcode text-indigo-600 mr-2"></i>Free QR Code Generator
-        </h1>
-        <p class="text-gray-600">Create custom-colored QR codes. Download as PNG or SVG. No watermarks, no signup required.</p>
+<div class="relative min-h-screen">
+    <!-- Background ambient glow -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute top-[-10%] left-[15%] w-[400px] h-[400px] bg-lime-500/5 rounded-full blur-[120px] animate-drift"></div>
+        <div class="absolute bottom-[10%] right-[10%] w-[350px] h-[350px] bg-emerald-500/4 rounded-full blur-[100px] animate-drift-reverse"></div>
     </div>
 
-    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Form -->
-            <div class="space-y-6">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">URL</label>
-                    <input type="url" id="qr-url" placeholder="https://example.com"
-                           class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Foreground Color</label>
-                        <input type="color" id="qr-fg" value="#000000" class="w-full h-10 rounded cursor-pointer">
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <!-- Header -->
+        <div class="text-center mb-16 animate-fade-in-up">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-lime-500/20 bg-lime-500/5 text-lime-400 text-sm font-bold font-display mb-6">
+                <i class="fa-solid fa-qrcode"></i> QR Generator
+            </div>
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-white font-display tracking-tight mb-6">
+                Create <span class="text-transparent bg-clip-text bg-gradient-to-r from-lime-300 to-emerald-400">Custom QR</span> Codes
+            </h1>
+            <p class="text-zinc-400 font-body text-lg max-w-2xl mx-auto">
+                No watermarks. No expiry. No signup required. Just beautiful, high-resolution QR codes for free.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 animate-fade-in-up delay-100">
+            <!-- Controls -->
+            <div class="lg:col-span-3 space-y-6">
+                <div class="bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-2xl p-8 shadow-2xl">
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-bold text-zinc-400 uppercase tracking-widest mb-3 font-display">Destination URL</label>
+                            <input type="url" id="qr-url" placeholder="https://example.com/your-page"
+                                   class="w-full px-5 py-4 rounded-xl bg-zinc-800/40 border border-zinc-700/50 focus:border-lime-500/50 focus:ring-2 focus:ring-lime-500/10 text-white placeholder-zinc-600 transition-all duration-200 font-body text-lg">
+                        </div>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-bold text-zinc-400 uppercase tracking-widest mb-3 font-display">Foreground</label>
+                                <div class="flex items-center gap-3 p-3 rounded-xl bg-zinc-800/40 border border-zinc-700/50">
+                                    <input type="color" id="qr-fg" value="#000000" class="w-12 h-12 rounded-lg cursor-pointer bg-transparent border-none">
+                                    <span class="text-zinc-300 font-mono text-sm uppercase" id="fg-hex">#000000</span>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-zinc-400 uppercase tracking-widest mb-3 font-display">Background</label>
+                                <div class="flex items-center gap-3 p-3 rounded-xl bg-zinc-800/40 border border-zinc-700/50">
+                                    <input type="color" id="qr-bg" value="#FFFFFF" class="w-12 h-12 rounded-lg cursor-pointer bg-transparent border-none">
+                                    <span class="text-zinc-300 font-mono text-sm uppercase" id="bg-hex">#FFFFFF</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-4">
+                            <button onclick="previewQR()"
+                                    class="w-full bg-lime-400 text-zinc-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-lime-300 transition-all duration-200 shadow-lg shadow-lime-500/20 hover:scale-[1.01] active:scale-[0.99] cursor-pointer font-display">
+                                <i class="fa-solid fa-wand-magic-sparkles mr-2"></i>Generate QR Code
+                            </button>
+                        </div>
                     </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Background Color</label>
-                        <input type="color" id="qr-bg" value="#FFFFFF" class="w-full h-10 rounded cursor-pointer">
-                    </div>
                 </div>
-                <button onclick="previewQR()"
-                        class="w-full bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors">
-                    <i class="fa-solid fa-eye mr-2"></i>Preview QR Code
-                </button>
-                <div class="flex gap-3">
-                    <button onclick="downloadQR('png')"
-                            class="flex-1 bg-gray-100 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-200">
-                        <i class="fa-solid fa-image mr-1"></i>Download PNG
-                    </button>
-                    <button onclick="downloadQR('svg')"
-                            class="flex-1 bg-gray-100 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-200">
-                        <i class="fa-solid fa-file-code mr-1"></i>Download SVG
-                    </button>
+
+                <div class="bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-2xl p-6">
+                    <h3 class="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-4 font-display">Download Formats</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="downloadQR('png')"
+                                class="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-zinc-800/50 text-zinc-300 font-bold hover:bg-zinc-700 hover:text-white transition-all duration-200 border border-zinc-700/50 font-display">
+                            <i class="fa-solid fa-file-image text-lime-400"></i> PNG
+                        </button>
+                        <button onclick="downloadQR('svg')"
+                                class="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-zinc-800/50 text-zinc-300 font-bold hover:bg-zinc-700 hover:text-white transition-all duration-200 border border-zinc-700/50 font-display">
+                            <i class="fa-solid fa-file-code text-emerald-400"></i> SVG
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <!-- Preview -->
-            <div class="flex items-center justify-center">
-                <div id="qr-preview" class="w-64 h-64 bg-gray-50 rounded-xl border-2 border-dashed border-gray-200 flex items-center justify-center">
-                    <div class="text-center text-gray-400">
-                        <i class="fa-solid fa-qrcode text-4xl mb-2"></i>
-                        <p class="text-sm">QR preview will appear here</p>
+            <!-- Preview Area -->
+            <div class="lg:col-span-2">
+                <div class="sticky top-24">
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-lime-500/20 to-emerald-500/20 rounded-3xl blur-xl opacity-50 group-hover:opacity-100 transition duration-1000"></div>
+                        <div id="qr-preview-container" class="relative aspect-square bg-zinc-900/60 backdrop-blur-2xl border border-zinc-800/50 rounded-3xl flex items-center justify-center overflow-hidden shadow-2xl">
+                            <div id="qr-preview-empty" class="text-center p-8">
+                                <div class="w-20 h-20 bg-zinc-800/50 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-zinc-700/50">
+                                    <i class="fa-solid fa-qrcode text-zinc-600 text-4xl"></i>
+                                </div>
+                                <p class="text-zinc-500 font-body">Your QR code will appear here after you click generate.</p>
+                            </div>
+                            <div id="qr-preview-output" class="hidden w-full h-full p-8">
+                                <!-- Image will be injected here -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 flex items-center justify-center gap-6 text-zinc-500 text-sm font-body">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-check text-lime-400"></i> High Res
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-check text-lime-400"></i> No Expiry
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-check text-lime-400"></i> Ad Free
+                        </div>
                     </div>
                 </div>
             </div>
@@ -63,28 +115,51 @@
 
 {% block extra_js %}
 <script>
-function getQRUrl(format) {
-    const url = document.getElementById('qr-url').value;
-    const fg = document.getElementById('qr-fg').value;
-    const bg = document.getElementById('qr-bg').value;
-    if (!url) {
-        alert('Please enter a URL');
-        return null;
+    // Update hex labels in real-time
+    document.getElementById('qr-fg').addEventListener('input', (e) => {
+        document.getElementById('fg-hex').textContent = e.target.value.toUpperCase();
+    });
+    document.getElementById('qr-bg').addEventListener('input', (e) => {
+        document.getElementById('bg-hex').textContent = e.target.value.toUpperCase();
+    });
+
+    function getQRUrl(format) {
+        const url = document.getElementById('qr-url').value;
+        const fg = document.getElementById('qr-fg').value.replace('#', '');
+        const bg = document.getElementById('qr-bg').value.replace('#', '');
+        if (!url) {
+            alert('Please enter a URL first');
+            return null;
+        }
+        return `/qr/generate/?url=${encodeURIComponent(url)}&fg=${encodeURIComponent(fg)}&bg=${encodeURIComponent(bg)}&format=${format}`;
     }
-    return `/qr/generate/?url=${encodeURIComponent(url)}&fg=${encodeURIComponent(fg)}&bg=${encodeURIComponent(bg)}&format=${format}`;
-}
 
-function previewQR() {
-    const src = getQRUrl('png');
-    if (!src) return;
-    const preview = document.getElementById('qr-preview');
-    preview.innerHTML = `<img src="${src}" alt="QR Code" class="w-full h-full object-contain rounded-xl">`;
-}
+    function previewQR() {
+        const src = getQRUrl('png');
+        if (!src) return;
+        
+        const empty = document.getElementById('qr-preview-empty');
+        const output = document.getElementById('qr-preview-output');
+        
+        output.innerHTML = `<img src="${src}" alt="QR Code" class="w-full h-full object-contain animate-fade-in">`;
+        empty.classList.add('hidden');
+        output.classList.remove('hidden');
+    }
 
-function downloadQR(format) {
-    const src = getQRUrl(format);
-    if (!src) return;
-    window.location.href = src;
-}
+    function downloadQR(format) {
+        const src = getQRUrl(format);
+        if (!src) return;
+        window.location.href = src;
+    }
 </script>
+
+<style>
+    @keyframes fade-in {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+    }
+    .animate-fade-in {
+        animation: fade-in 0.4s ease-out forwards;
+    }
+</style>
 {% endblock %}

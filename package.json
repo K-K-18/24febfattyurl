@@ -8,7 +8,7 @@
     "collect": "uv run manage.py collectstatic --noinput",
     "run": "uv run manage.py runserver",
     "start": "npm run build && npm run collect",
-    "dev": "nodemon --watch . --ext html --exec \"npm run build && npm run collect && npm run run\""
+    "dev": "nodemon --watch . --ext html --exec \"npm run build && npm run collect\""
   },
   "repository": {
     "type": "git",
