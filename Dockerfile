@@ -18,4 +18,4 @@ COPY . .
 RUN uv run manage.py collectstatic --noinput
 EXPOSE 8000
 
-CMD ["gunicorn", "fattyurl.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["uv", "run", "gunicorn", "fattyurl.wsgi:application", "--bind", "0.0.0.0:8000"]
